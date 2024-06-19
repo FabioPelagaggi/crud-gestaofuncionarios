@@ -15,6 +15,11 @@ public class Departamento {
         this.local = local;
     }
 
+    public Departamento(String nome, String local) {
+        this.nome = nome;
+        this.local = local;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

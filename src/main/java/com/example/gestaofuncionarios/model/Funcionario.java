@@ -20,6 +20,15 @@ public class Funcionario {
         this.departamento = departamento;
     }
 
+    public Funcionario(String nome, String endereco, String telefone, String email, LocalDate dataNascimento, Departamento departamento) {
+        this.nome = nome;
+        this.endereco = endereco;
+        this.telefone = telefone;
+        this.email = email;
+        this.dataNascimento = dataNascimento;
+        this.departamento = departamento;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
