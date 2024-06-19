@@ -55,12 +55,6 @@ class GestaofuncionariosApplicationTests {
 		ResponseEntity<Departamento> response = restTemplate
 				.getForEntity("http://localhost:" + port + "/departamentos/" + idToUpdate, Departamento.class);
 		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.METHOD_NOT_ALLOWED);
-		/*
-		 * assertThat(response.getBody().getNome()).isEqualTo(updatedDepartamento.
-		 * getNome());
-		 * assertThat(response.getBody().getLocal()).isEqualTo(updatedDepartamento.
-		 * getLocal());
-		 */
 	}
 
 	@Test
@@ -100,10 +94,6 @@ class GestaofuncionariosApplicationTests {
 		ResponseEntity<Funcionario> response = restTemplate
 				.getForEntity("http://localhost:" + port + "/funcionarios/" + idToUpdate, Funcionario.class);
 		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.METHOD_NOT_ALLOWED);
-		/*
-		 * assertThat(response.getBody().getNome()).isEqualTo(updatedFuncionario.getNome
-		 * ());
-		 */
 	}
 
 	@Test
