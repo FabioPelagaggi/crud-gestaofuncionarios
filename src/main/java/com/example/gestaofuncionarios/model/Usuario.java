@@ -6,6 +6,16 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 public class Usuario {
 
+    public Usuario() {
+    }
+
+    public Usuario(String id, String nome, String senha, String papel) {
+        this.id = id;
+        this.nome = nome;
+        this.senha = senha;
+        this.papel = papel;
+    }
+
     @Id
     private String id;
     private String nome;
