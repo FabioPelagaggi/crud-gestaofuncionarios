@@ -1,4 +1,5 @@
-FROM openjdk:17-jre-slim
-VOLUME /tmp
-COPY target/gestao-funcionarios-0.0.1-SNAPSHOT.jar app.jar
+FROM openjdk:17-jdk-slim
+WORKDIR /app
+COPY target/gestaofuncionarios-0.0.1-SNAPSHOT.jar app.jar
+EXPOSE 8080
 ENTRYPOINT ["java","-jar","/app.jar"]
