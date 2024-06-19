@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import com.example.gestaofuncionarios.model.Departamento;
+import com.example.gestaofuncionarios.model.Funcionario;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -65,6 +66,48 @@ class GestaofuncionariosApplicationTests {
 		restTemplate.delete("http://localhost:" + port + "/departamentos/" + idToDelete);
 
 		ResponseEntity<Departamento> response = restTemplate.getForEntity("http://localhost:" + port + "/departamentos/" + idToDelete, Departamento.class);
+		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
+	}
+
+	@Test
+	public void testGetAllFuncionarios() {
+		ResponseEntity<String> response = restTemplate.getForEntity("http://localhost:" + port + "/funcionarios", String.class);
+		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+	}
+
+	@Test
+	public void testCreateFuncionario() {
+		Funcionario newFuncionario = new Funcionario();
+		newFuncionario.setNome("John Doe");
+		newFuncionario.setEndereco("123 Main St");
+		newFuncionario.setTelefone("1234567890");
+		newFuncionario.setEmail("john.doe@example.com");
+	
+		ResponseEntity<Funcionario> response = restTemplate.postForEntity("http://localhost:" + port + "/funcionarios", newFuncionario, Funcionario.class);
+		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
+		assertThat(response.getBody().getNome()).isEqualTo(newFuncionario.getNome());
+	}
+
+	@Test
+	public void testUpdateFuncionario() {
+		Long idToUpdate = 1L; // substitua por um ID do banco de dados
+		Funcionario updatedFuncionario = new Funcionario();
+		updatedFuncionario.setNome("Jane Doe");
+
+		restTemplate.put("http://localhost:" + port + "/funcionarios/" + idToUpdate, updatedFuncionario, Funcionario.class);
+
+		ResponseEntity<Funcionario> response = restTemplate.getForEntity("http://localhost:" + port + "/funcionarios/" + idToUpdate, Funcionario.class);
+		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+		assertThat(response.getBody().getNome()).isEqualTo(updatedFuncionario.getNome());
+	}
+
+	@Test
+	public void testDeleteFuncionario() {
+		Long idToDelete = 1L; // substitua por um ID do banco de dados
+
+		restTemplate.delete("http://localhost:" + port + "/funcionarios/" + idToDelete);
+
+		ResponseEntity<Funcionario> response = restTemplate.getForEntity("http://localhost:" + port + "/funcionarios/" + idToDelete, Funcionario.class);
 		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
 	}
 }
