@@ -6,6 +6,15 @@ import java.util.List;
 @Entity
 public class Departamento {
 
+    public Departamento() {
+    }
+
+    public Departamento(long id, String nome, String local) {
+        this.id = id;
+        this.nome = nome;
+        this.local = local;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

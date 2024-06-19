@@ -7,6 +7,19 @@ import java.time.LocalDate;
 @Entity
 public class Funcionario {
 
+    public Funcionario() {
+    }
+
+    public Funcionario(Long id, String nome, String endereco, String telefone, String email, LocalDate dataNascimento, Departamento departamento) {
+        this.id = id;
+        this.nome = nome;
+        this.endereco = endereco;
+        this.telefone = telefone;
+        this.email = email;
+        this.dataNascimento = dataNascimento;
+        this.departamento = departamento;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
