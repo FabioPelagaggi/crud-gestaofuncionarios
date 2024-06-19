@@ -121,7 +121,7 @@ class GestaofuncionariosApplicationTests {
 
 		ResponseEntity<Funcionario> response = restTemplate
 				.getForEntity("http://localhost:" + port + "/funcionarios/" + idToDelete, Funcionario.class);
-		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
+		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.METHOD_NOT_ALLOWED);
 	}
 
 	@Test
@@ -132,6 +132,6 @@ class GestaofuncionariosApplicationTests {
 
 		ResponseEntity<Departamento> response = restTemplate
 				.getForEntity("http://localhost:" + port + "/departamentos/" + idToDelete, Departamento.class);
-		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
+		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.METHOD_NOT_ALLOWED);
 	}
 }
